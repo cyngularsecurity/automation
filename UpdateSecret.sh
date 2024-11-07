@@ -11,7 +11,7 @@ NEW_VALUE=$(curl -s https://wtfismyip.com)/32
 
 UPDATED_SECRET=$(echo "$CURRENT_SECRET" | jq --arg key "$KEY_NAME" --arg value "$NEW_VALUE" '.[$key] = $value')
 
-aws secretsmanager update-secret --secret-id "$SECRET_NAME" --secret-string "$UPDATED_SECRET"
+aws secretsmanager update-secret --secret-id "$SECRET_NAME" --secret-string "$UPDATED_SECRET" --region us-west-2
 
 if [ "$?" -eq 0 ]; then
     echo "Successfully updated the secret $SECRET_NAME with the new value for key $KEY_NAME."
