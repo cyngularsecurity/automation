@@ -19,4 +19,3 @@ else
     echo "Failed to update the secret $SECRET_NAME."
     exit 1
 fi
-
