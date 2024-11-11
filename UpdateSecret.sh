@@ -6,7 +6,7 @@ KEY_NAME=$1
 CURRENT_SECRET=$(aws secretsmanager get-secret-value --secret-id "$SECRET_NAME" --query 'SecretString' --output text --region us-west-2)
 
 
-NEW_VALUE=$(curl -s https://wtfismyip.com)/32
+NEW_VALUE=$(curl -s https://checkip.amazonaws.com/)/32
  
 
 UPDATED_SECRET=$(echo "$CURRENT_SECRET" | jq --arg key "$KEY_NAME" --arg value "$NEW_VALUE" '.[$key] = $value')
